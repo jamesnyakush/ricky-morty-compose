@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RickyMorty</string>
+    <string name="network_error_request_not_completed">Sorry. We could not complete your request</string>
+</resources>
