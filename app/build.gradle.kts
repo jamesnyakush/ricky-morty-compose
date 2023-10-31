@@ -51,45 +51,8 @@ android {
 }
 
 dependencies {
+    api(project(":core"))
+    api(project(":data"))
+    api(project(":domain"))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.ktx)
-    implementation(libs.activity.compose)
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.graphics)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material3)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
-
-    // Interceptors
-    implementation(libs.okhttp)
-    implementation(libs.logging.interceptor)
-
-    debugImplementation(libs.library)
-    releaseImplementation(libs.library.no.op)
-
-    // Navigation
-    implementation(libs.navigation)
-
-    // Koin for Di
-    api(libs.koin.android)
-    api(libs.koin.core)
-    implementation( libs.koin.androidx.compose)
-
-    // Logging Libraries
-    implementation(libs.timber)
-
-    implementation(libs.coil.compose)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.junit.ext)
-    androidTestImplementation(libs.expresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling.testing)
-    debugImplementation(libs.ui.test.manifest)
 }

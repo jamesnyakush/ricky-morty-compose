@@ -1,10 +1,9 @@
-package com.jnyakush.rickymorty.data.repository
+package com.jnyakush.data.repository
 
-import com.jnyakush.rickymorty.data.model.Character
-import com.jnyakush.rickymorty.data.model.CharacterResponse
-import com.jnyakush.rickymorty.data.network.ApiClient
-import com.jnyakush.rickymorty.domain.repository.CharacterRepository
-import com.jnyakush.rickymorty.util.Response
+import com.jnyakush.core.Response
+import com.jnyakush.data.network.ApiClient
+import com.jnyakush.domain.model.CharacterResponse
+import com.jnyakush.domain.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -23,12 +22,12 @@ class CharacterRepositoryImpl constructor(
     }
 
     override suspend fun getCharacterByID(id: Int): Flow<Response<Character>> = flow {
-       try {
-           emit(Response.Loading)
-           val result = apiClient.getCharacterByID(id = id)
-           emit(Response.Success(result))
-       } catch (e:Exception) {
-           emit(Response.Failure(e))
-       }
+        try {
+            emit(Response.Loading)
+            val result = apiClient.getCharacterByID(id = id)
+            emit(Response.Success(result))
+        } catch (e:Exception) {
+            emit(Response.Failure(e))
+        }
     }
 }

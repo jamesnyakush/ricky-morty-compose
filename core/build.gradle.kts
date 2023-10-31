@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jnyakush.data"
+    namespace = "com.jnyakush.core"
     compileSdk = 33
 
     defaultConfig {
@@ -35,14 +35,46 @@ android {
 
 dependencies {
 
-    implementation(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":domain")))
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
+    api(libs.androidx.core.ktx)
+    api(libs.androidx.lifecycle.ktx)
+    api(libs.activity.compose)
+    api(platform(libs.compose.bom))
+    api(libs.compose.ui)
+    api(libs.compose.ui.graphics)
+    api(libs.compose.ui.tooling.preview)
+    api(libs.compose.material3)
+
+    // Retrofit
+    api(libs.retrofit)
+    api(libs.retrofit.converter.gson)
+
+    // Interceptors
+    api(libs.okhttp)
+    api(libs.logging.interceptor)
+
+
+    debugApi(libs.library)
+    releaseApi(libs.library.no.op)
+
+    // Navigation
+    api(libs.navigation)
+
+    // Koin for Di
+    api(libs.koin.android)
+    api(libs.koin.core)
+    api( libs.koin.androidx.compose)
+
+    // Logging Libraries
+    api(libs.timber)
+
+    api(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.expresso.core)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling.testing)
+    debugImplementation(libs.ui.test.manifest)
 }

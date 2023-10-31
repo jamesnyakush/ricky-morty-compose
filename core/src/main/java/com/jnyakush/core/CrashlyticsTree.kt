@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.util
+package com.jnyakush.core
 
 import android.util.Log
 import timber.log.Timber

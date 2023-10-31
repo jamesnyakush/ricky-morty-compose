@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.data.model
+package com.jnyakush.domain.model
 
 data class Origin(
     val name: String,

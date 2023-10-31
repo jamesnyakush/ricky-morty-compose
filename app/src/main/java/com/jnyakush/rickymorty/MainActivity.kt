@@ -1,6 +1,7 @@
 package com.jnyakush.rickymorty
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -29,9 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.jnyakush.core.Response
 import com.jnyakush.rickymorty.ui.theme.RickyMortyTheme
 import com.jnyakush.rickymorty.ui.viewmodel.CharacterViewModel
-import com.jnyakush.rickymorty.util.Response
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
@@ -68,7 +69,8 @@ fun Greeting() {
         is Response.Success -> {
             LazyVerticalGrid(columns = GridCells.Fixed(2)) {
                 characterResponse.data?.results?.let {
-                    items(it) {
+                    items(it){
+
                         Column(modifier = Modifier.padding(10.dp)) {
                             AsyncImage(
                                 model = ImageRequest.Builder(LocalContext.current)

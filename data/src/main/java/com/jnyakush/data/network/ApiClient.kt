@@ -1,7 +1,6 @@
-package com.jnyakush.rickymorty.data.network
+package com.jnyakush.data.network
 
-import com.jnyakush.rickymorty.data.model.Character
-import com.jnyakush.rickymorty.data.model.CharacterResponse
+import com.jnyakush.domain.model.CharacterResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

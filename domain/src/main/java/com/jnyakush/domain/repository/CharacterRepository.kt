@@ -1,8 +1,8 @@
-package com.jnyakush.rickymorty.domain.repository
+package com.jnyakush.domain.repository
 
-import com.jnyakush.rickymorty.data.model.Character
-import com.jnyakush.rickymorty.data.model.CharacterResponse
-import com.jnyakush.rickymorty.util.Response
+
+import com.jnyakush.core.Response
+import com.jnyakush.domain.model.CharacterResponse
 import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {

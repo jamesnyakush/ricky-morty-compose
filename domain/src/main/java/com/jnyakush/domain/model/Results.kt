@@ -1,6 +1,8 @@
-package com.jnyakush.rickymorty.data.model
+package com.jnyakush.domain.model
 
-data class Character(
+import android.location.Location
+
+data class Results(
     val created: String,
     val episode: List<String>,
     val gender: String,

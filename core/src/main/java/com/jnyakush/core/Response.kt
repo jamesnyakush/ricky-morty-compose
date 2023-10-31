@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.util
+package com.jnyakush.core
 
 sealed class Response<out T> {
     object Loading: Response<Nothing>()

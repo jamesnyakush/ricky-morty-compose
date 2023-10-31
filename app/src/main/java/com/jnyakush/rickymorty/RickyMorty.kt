@@ -1,16 +1,16 @@
 package com.jnyakush.rickymorty
 
 import android.app.Application
-import com.jnyakush.rickymorty.di.apiModules
-import com.jnyakush.rickymorty.di.networkingModules
-import com.jnyakush.rickymorty.di.repositoryModule
+import com.jnyakush.data.di.dataModule
+import com.jnyakush.domain.di.domainModule
+import com.jnyakush.core.CrashlyticsTree
 import com.jnyakush.rickymorty.di.viewModelModule
-import com.jnyakush.rickymorty.util.CrashlyticsTree
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.error.KoinAppAlreadyStartedException
 import org.koin.core.logger.Level
+import org.koin.core.module.Module
 import timber.log.Timber
 
 class RickyMorty : Application() {
@@ -28,14 +28,12 @@ class RickyMorty : Application() {
             startKoin {
                 androidLogger(Level.ERROR)
                 androidContext(applicationContext)
-                modules(
-                    listOf(
-                        repositoryModule,
-                        viewModelModule,
-                        networkingModules,
-                        apiModules,
-                    )
-                )
+                val modules = mutableListOf<Module>().apply {
+                    addAll(dataModule)
+                    addAll(domainModule)
+                    add(viewModelModule)
+                }
+                modules(modules)
             }
         } catch (error: KoinAppAlreadyStartedException) {
             Timber.e(error.localizedMessage)
