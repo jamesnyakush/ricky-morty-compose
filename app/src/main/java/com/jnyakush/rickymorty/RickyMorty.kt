@@ -19,7 +19,7 @@ class RickyMorty : Application() {
         super.onCreate()
 
         initKoin()
-        initTimber()
+       // initTimber()
     }
 
     // Koin
@@ -43,7 +43,7 @@ class RickyMorty : Application() {
     }
 
     // Timber
-    private fun initTimber() {
+/*    private fun initTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 override fun createStackElementTag(element: StackTraceElement): String {
@@ -53,5 +53,5 @@ class RickyMorty : Application() {
         } else {
             Timber.plant(CrashlyticsTree())
         }
-    }
+    }*/
 }
