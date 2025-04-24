@@ -11,6 +11,7 @@ library-no-op = "4.1.0"
 coil-compose = "2.5.0"
 logging-interceptor = "4.12.0"
 okhttp = "4.12.0"
+paging-runtime = "3.3.6"
 timber = "5.0.1"
 ksp = "1.8.10-1.0.9"
 retrofit = "2.9.0"
@@ -27,6 +28,8 @@ material = "1.12.0"
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 androidx-lifecycle-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-ktx" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging-runtime" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging-runtime" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref ="compose-bom" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }

@@ -1,24 +1,32 @@
 package com.jnyakush.rickymorty.ui.viewmodel
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jnyakush.rickymorty.data.model.CharacterResponse
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.jnyakush.rickymorty.domain.repository.CharacterRepository
 import com.jnyakush.rickymorty.util.Response
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import com.jnyakush.rickymorty.data.model.Character
 
-class CharacterViewModel constructor(
-    private val characterRepository: CharacterRepository,
+
+class CharacterViewModel(
+    private val characterRepository: CharacterRepository
 ) : ViewModel() {
 
-    private val _characterResponse = mutableStateOf<Response<CharacterResponse>>(Response.Success(null))
-    val characterResponse: State<Response<CharacterResponse>> = _characterResponse
+    val characters: Flow<PagingData<Character>> =
+        characterRepository.getCharactersPaged().cachedIn(viewModelScope)
 
-    fun getCharacters()  = viewModelScope.launch {
-        characterRepository.getCharacters().collect{ response ->
-            _characterResponse.value = response
+    private val _characterById = MutableStateFlow<Response<Character>>(Response.Loading)
+    val characterById: StateFlow<Response<Character>> = _characterById.asStateFlow()
+
+    fun getCharacterById(id: Int) = viewModelScope.launch {
+        characterRepository.getCharacterByID(id).collect {
+            _characterById.value = it
         }
     }
 }

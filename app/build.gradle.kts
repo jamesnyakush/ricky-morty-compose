@@ -78,12 +78,15 @@ dependencies {
     // Koin for Di
     api(libs.koin.android)
     api(libs.koin.core)
-    implementation( libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.compose)
 
     // Logging Libraries
     implementation(libs.timber)
 
     implementation(libs.coil.compose)
+
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)

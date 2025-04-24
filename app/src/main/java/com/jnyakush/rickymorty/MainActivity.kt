@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -25,7 +25,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,12 +37,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import androidx.paging.LoadState
+import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.jnyakush.rickymorty.data.model.Character
 import com.jnyakush.rickymorty.ui.theme.RickyMortyTheme
 import com.jnyakush.rickymorty.ui.viewmodel.CharacterViewModel
-import com.jnyakush.rickymorty.util.Response
 import org.koin.androidx.compose.koinViewModel
 
 class MainActivity : ComponentActivity() {
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        RequestPermissions()
+        requestPermissions()
 
         setContent {
             RickyMortyTheme {
@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun RequestPermissions() {
+   private fun requestPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
             if (ContextCompat.checkSelfPermission(
@@ -82,6 +82,9 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Main() {
+
+    val vm = koinViewModel<CharacterViewModel>()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -97,33 +100,23 @@ fun Main() {
                     .padding(padding),
                 color = MaterialTheme.colorScheme.background
             ) {
-                Greeting()
+                CharacterListScreen(viewModel = vm)
             }
         }
     )
 }
 
+
 @Composable
-fun Greeting() {
-    val vm = koinViewModel<CharacterViewModel>()
+fun CharacterListScreen(viewModel: CharacterViewModel) {
+    val characters = viewModel.characters.collectAsLazyPagingItems()
 
-    LaunchedEffect(Unit) {
-        vm.getCharacters()
-    }
-
-    when (val characterResponse = vm.characterResponse.value) {
-        is Response.Loading -> {}
-        is Response.Success -> {
-            LazyVerticalGrid(columns = GridCells.Fixed(2)) {
-                characterResponse.data?.results?.let { characters ->
-                    items(characters) { character ->
-                        CharacterCard(character)
-                    }
-                }
+    LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        items(characters.itemCount) { index ->
+            characters[index]?.let { character ->
+                CharacterCard(character)
             }
         }
-
-        is Response.Failure -> {}
     }
 }
 
