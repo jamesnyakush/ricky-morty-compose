@@ -8,7 +8,12 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterRepository {
 
     // Getting all Characters
-    fun getCharactersPaged(): Flow<PagingData<Character>>
+    fun getPagedCharacters(
+        name: String? = null,
+        status: String? = null,
+        species: String? = null,
+        gender: String? = null
+    ): Flow<PagingData<Character>>
 
     // Getting Character by id eg https://rickandmortyapi.com/api/character/2
     suspend fun getCharacterByID(id: Int): Flow<Response<Character>>

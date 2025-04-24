@@ -16,10 +16,23 @@ class CharacterRepositoryImpl(
     private val apiClient: ApiClient
 ) : CharacterRepository {
 
-    override fun getCharactersPaged(): Flow<PagingData<Character>> {
+    override fun getPagedCharacters(
+        name: String?,
+        status: String?,
+        species: String?,
+        gender: String?
+    ): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { CharacterPagingSource(apiClient) }
+            pagingSourceFactory = {
+                CharacterPagingSource(
+                    apiClient,
+                    name = name,
+                    status = status,
+                    species = species,
+                    gender = gender
+                )
+            }
         ).flow
     }
 
