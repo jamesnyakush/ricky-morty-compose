@@ -7,7 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.navigation.compose.rememberNavController
 import com.jnyakush.rickymorty.ui.navigation.AppNavHost
 import com.jnyakush.rickymorty.ui.theme.RickyMortyTheme
-import com.jnyakush.rickymorty.util.RequestNotificationPermission
+import com.jnyakush.rickymorty.ui.component.RequestNotificationPermission
 import timber.log.Timber
 
 class MainActivity : ComponentActivity() {

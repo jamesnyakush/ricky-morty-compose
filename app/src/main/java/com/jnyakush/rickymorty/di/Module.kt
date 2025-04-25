@@ -1,16 +1,17 @@
 package com.jnyakush.rickymorty.di
 
+import android.widget.Toast
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.google.gson.GsonBuilder
+import com.jnyakush.rickymorty.BuildConfig
 import com.jnyakush.rickymorty.data.remote.ApiClient
 import com.jnyakush.rickymorty.data.repository.CharacterRepositoryImpl
 import com.jnyakush.rickymorty.domain.repository.CharacterRepository
 import com.jnyakush.rickymorty.ui.viewmodel.CharacterViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module

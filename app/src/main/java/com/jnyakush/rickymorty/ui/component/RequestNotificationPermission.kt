@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.util
+package com.jnyakush.rickymorty.ui.component
 
 import android.Manifest
 import android.content.pm.PackageManager

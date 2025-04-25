@@ -9,7 +9,6 @@ import com.jnyakush.rickymorty.util.CrashlyticsTree
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.core.error.KoinAppAlreadyStartedException
 import org.koin.core.logger.Level
 import timber.log.Timber
 
@@ -24,21 +23,15 @@ class RickyMorty : Application() {
 
     // Koin
     private fun initKoin() {
-        try {
-            startKoin {
-                androidLogger(Level.ERROR)
-                androidContext(applicationContext)
-                modules(
-                    listOf(
-                        repositoryModule,
-                        viewModelModule,
-                        networkingModules,
-                        apiModules,
-                    )
-                )
-            }
-        } catch (error: KoinAppAlreadyStartedException) {
-            Timber.e(error.localizedMessage)
+        startKoin {
+            androidLogger(Level.ERROR)
+            androidContext(this@RickyMorty)
+            modules(
+                repositoryModule,
+                viewModelModule,
+                networkingModules,
+                apiModules,
+            )
         }
     }
 
