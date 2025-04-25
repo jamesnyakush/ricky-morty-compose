@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.data.network
+package com.jnyakush.rickymorty.data.remote
 
 import com.jnyakush.rickymorty.data.model.Character
 import com.jnyakush.rickymorty.data.model.CharacterResponse

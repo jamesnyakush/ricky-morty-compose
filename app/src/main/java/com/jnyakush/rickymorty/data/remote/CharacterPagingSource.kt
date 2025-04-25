@@ -1,4 +1,4 @@
-package com.jnyakush.rickymorty.data.network
+package com.jnyakush.rickymorty.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

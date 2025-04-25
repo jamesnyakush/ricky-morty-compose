@@ -4,7 +4,7 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.chuckerteam.chucker.api.RetentionManager
 import com.google.gson.GsonBuilder
-import com.jnyakush.rickymorty.data.network.ApiClient
+import com.jnyakush.rickymorty.data.remote.ApiClient
 import com.jnyakush.rickymorty.data.repository.CharacterRepositoryImpl
 import com.jnyakush.rickymorty.domain.repository.CharacterRepository
 import com.jnyakush.rickymorty.ui.viewmodel.CharacterViewModel

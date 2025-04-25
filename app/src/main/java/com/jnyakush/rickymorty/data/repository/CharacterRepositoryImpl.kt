@@ -4,8 +4,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.jnyakush.rickymorty.data.model.Character
-import com.jnyakush.rickymorty.data.network.ApiClient
-import com.jnyakush.rickymorty.data.network.CharacterPagingSource
+import com.jnyakush.rickymorty.data.remote.ApiClient
+import com.jnyakush.rickymorty.data.remote.CharacterPagingSource
 import com.jnyakush.rickymorty.domain.repository.CharacterRepository
 import com.jnyakush.rickymorty.util.Response
 import kotlinx.coroutines.flow.Flow
