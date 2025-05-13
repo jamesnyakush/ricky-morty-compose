@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="17">
+      <module name="RickyMorty.app" target="21" />
       <module name="RickyMorty.data" target="21" />
       <module name="RickyMorty.domain" target="21" />
     </bytecodeTargetLevel>

@@ -1,9 +1,31 @@
-### Rick Morty Api With Jetpack Compose
+# Rick Morty App
+Rick and Morty app is a simple application that fetches data from the Rick and Morty API. 
+It displays a list of characters, their details, and allows users to search for specific characters.
 
+## Features
+- Fetches data from the Rick and Morty API
+- Displays a list of characters
+- Displays character details
+- Search functionality to find specific characters
+- Responsive design
+- Dark mode support
+- Unit tests for components and API calls
+- Integration tests for the app
+- End-to-end tests using Cypress
+- CI/CD pipeline for automated testing and deployment
+- GitHub Actions for CI/CD
 
+## Screenshots
 
+## Technologies Used
+
+## Getting Started
+
+## Contributing
+
+## License
 ```
-Copyright (c) 2025 James Nyakundi
+Copyright (c) 2025 James Nyakundi 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
